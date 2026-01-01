@@ -168,3 +168,14 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * Function to reroute main CSS file.
+ */
+
+function my_template_scripts() 
+{
+	wp_enqueue_style("style", get_template_directory_uri() . "/assets/main.css", [], false);
+	wp_enqueue_script("script", get_template_directory_uri() . "/assets/main.min.js", [], false);		
+}
+add_action("wp_enqueue_scripts", "my_template_scripts");
